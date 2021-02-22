@@ -11,9 +11,9 @@ function App() {
     mobile: 0 ,
     unit : 0,
     cost: 0,
-    totalPrice: 0,
+    totalprice: 0,
     gst:0,
-    grandTotal:0
+    grandtotal:0
 
     
   });
@@ -31,22 +31,22 @@ function App() {
    } 
   const calTotalPrice = () => {
     setState({
-      ...state, totalPrice: state.unit*state.cost
+      ...state, totalprice: state.unit*state.cost
     })
-    document.getElementById('totalprice').value = state.totalPrice;
+    document.getElementById('totalprice').value = state.totalprice;
   } 
   
   //calculating gst
   const calGst = () => {
     setState({
-      ...state, gst:  (state.totalPrice*10)/100
+      ...state, gst:  (state.totalprice*10)/100
     })
     document.getElementById('gst').value = state.gst;
   }
 
   const calGrandTotal = () => {
     setState({
-      ...state, grandTotal: state.totalPrice + state.gst
+      ...state, grandtotal: state.totalprice + state.gst
     })
   }
 
@@ -58,9 +58,21 @@ const handler = (event) =>{
   });
 }
 
-const onSubmitting = () =>{
-
-}
+const onSubmitting = () => {
+  axios.post('http://localhost:3001/create', {
+    name: name,
+    surname: surname,
+    email: email,
+    mobile: mobile ,
+    unit : unit,
+    cost: cost,
+    totalprice: totalprice,
+    gst: gst,
+    grandtotal : grandtotal
+    }).then(response => {
+      console.log("Successfully Saved in Database");
+    });
+};
 
 return (
     <div className="App">
