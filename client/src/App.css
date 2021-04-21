@@ -28,4 +28,16 @@
   background-color: rgb(202, 190, 17);
 
 }
+.employee{
+  text-align: center;
+}
+.data{
+  border:solid rgb(58, 178, 34);
+  padding: 10px;
+  width:350px;
+  align-items: center;
+ justify-content: center;
+ background-color: lightcyan;
+  
+}
 
